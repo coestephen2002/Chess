@@ -1,2 +1,2 @@
 # Chess
-A working Chess game made in Java
+A working Chess engine made in Java
