@@ -10,7 +10,9 @@ import com.chess.engine.board.BoardUtils;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
 import com.chess.engine.board.Move.AttackMove;
+import com.chess.engine.board.Move.MajorAttackMove;
 import com.chess.engine.board.Move.MajorMove;
+import com.chess.engine.pieces.Piece.PieceType;
 
 public class Bishop extends Piece {
 	
@@ -18,7 +20,12 @@ public class Bishop extends Piece {
 	
 	public Bishop(final int piecePosition, final Alliance pieceAlliance) {
 		
-		super(piecePosition, pieceAlliance, PieceType.BISHOP);
+		super(piecePosition, pieceAlliance, PieceType.BISHOP, true);
+	}
+	
+	public Bishop(final int piecePosition, final Alliance pieceAlliance, final boolean isFirstMove) {
+		
+		super(piecePosition, pieceAlliance, PieceType.BISHOP, isFirstMove);
 	}
 
 	/**
@@ -55,7 +62,7 @@ public class Bishop extends Piece {
 						final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
 						
 						if(this.pieceAlliance != pieceAlliance) {
-							legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
+							legalMoves.add(new MajorAttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
 						}
 						break;
 					}
